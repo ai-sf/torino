@@ -1,0 +1,393 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+
+
+// Our variables
+$base-font-family: Helvetica, Arial, sans-serif;
+$base-font-size:   16px;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+// Colors
+
+$color-type1: {{ site.data.generic.color1 }};
+$color-type2: {{ site.data.generic.color2 }};
+$color-type2-light: {{ site.data.generic.color2-light }};
+// $color-type1: #4C6EAD;
+// $color-type2: #EAA84E;
+
+$slider-indicator-color: {{ site.data.generic.color1 }};
+
+//
+
+$text-color:       #111;
+$background-color: #eee;
+$brand-color:      #2a7ae2;
+
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+
+// Width of the content area
+$content-width:    800px;
+
+$on-palm:          600px;
+$on-laptop:        800px;
+
+// navbar title font size
+$navbar-brand-font-size: 2.1rem;
+
+
+// Using media queries with like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+/*
+.logo img {
+    max-width: 200px;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+*/
+
+
+
+
+
+
+
+/* Stile per la sezione home */
+#home {
+    text-align: center;
+    padding: 40px 20px;
+  }
+  
+
+  .home-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 300px; /* puoi aumentare o diminuire a piacere */
+    margin-bottom: 20px;
+  }
+  
+
+  .animated-banner {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeSlideIn 1.2s ease-out forwards;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 300px; /* puoi aumentare o diminuire a piacere */
+    margin-bottom: 20px;
+  }
+  
+  @keyframes fadeSlideIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animated-item {
+    opacity: 0;
+    transform: translateY(20px); /* Iniziamo fuori dalla vista */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .animated-item.visible {
+    opacity: 1;
+    transform: translateY(0); /* Quando diventa visibile, torna nella posizione normale */
+  }
+
+  #home .logo img {
+    max-width: 220px;
+    height: auto;
+    margin: 20px auto;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  #home .description p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #333;
+  }
+/*
+  .post-it-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 4rem 0;
+    flex-wrap: wrap;
+  }
+  
+  .post-it {
+    background-color: #fff8a3;
+    width: 300px;
+    padding: 1.5rem;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: rotate(-4deg);
+    transition: transform 0.3s ease;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    border: 1px solid #e0d700;
+    border-radius: 8px;
+  }
+  
+  .post-it p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  
+  .post-it-right {
+    transform: rotate(4deg);
+  }
+  
+  .post-it:hover {
+    transform: scale(1.05) rotate(0deg);
+  }
+*/  
+
+.post-it-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 4rem 0;
+  flex-wrap: wrap;
+}
+
+.post-it {
+  background-color: #fff8a3;
+  width: 300px;
+  padding: 1.5rem;
+  box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.3); /* ombra più pronunciata */
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  border: 1px solid #e0d700;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateX(0);
+  transition: all 0.8s ease;
+}
+
+.post-it-left {
+  transform: rotate(-4deg);
+}
+
+.post-it-right {
+  transform: rotate(4deg);
+}
+
+.post-it p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Slide-in animation */
+.slide-left {
+  transform: translateX(-100px);
+}
+
+.slide-right {
+  transform: translateX(100px);
+}
+
+.show {
+  opacity: 1;
+  transform: translateX(0) rotate(0deg);
+}
+
+.tape {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 60px;
+  height: 20px;
+  background: #d1cfcf;
+  top: -10px;
+  z-index: 2;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  transform: rotate(-5deg);
+  opacity: 0.9;
+}
+
+.tape-left {
+  left: 30px;
+}
+
+.tape-right {
+  right: 30px;
+}
+
+.post-it {
+  position: relative; /* serve per posizionare il nastro */
+}
+
+/*
+.video-wrapper {
+  background-color: #6A1B9A;   
+  width: 320px;                
+  height: 570px;               
+  margin: 50px auto;
+  padding: 10px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 0 20px rgba(138, 43, 226, 0.6),  
+    0 8px 24px rgba(0, 0, 0, 0.4);     
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  
+  border-radius: 12px;
+}
+
+.video-wrapper:hover video {
+  transform: scale(1.05);   
+}
+*/
+
+
+.video-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
+}
+
+.video-wrapper {
+  position: relative;
+  background-color: #6A1B9A;
+  width: 320px;
+  height: 570px;
+  padding: 10px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 0 20px rgba(138, 43, 226, 0.6),
+    0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.video-wrapper:hover video {
+  transform: scale(1.05);
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  width: 170px;
+  height: 100%;
+  background-color: #6A1B9A;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particles.left {
+  left: 0;
+}
+
+.particles.right {
+  right: 0;
+}
+
+/* PARTICELLE CHE SALGONO */
+.particles span {
+  position: absolute;
+  bottom: -20px;
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+}
+
+/* Diversi ritardi e velocità per varietà (puoi aggiungerne altre) */
+.particles span:nth-child(1) {
+  left: 10px;
+  animation-delay: 0s;
+  animation-duration: 8s;
+}
+.particles span:nth-child(2) {
+  left: 30px;
+  animation-delay: 2s;
+  animation-duration: 10s;
+}
+.particles span:nth-child(3) {
+  left: 50px;
+  animation-delay: 4s;
+  animation-duration: 12s;
+}
+.particles span:nth-child(4) {
+  left: 70px;
+  animation-delay: 1s;
+  animation-duration: 9s;
+}
+.particles span:nth-child(5) {
+  left: 90px;
+  animation-delay: 3s;
+  animation-duration: 11s;
+}
+
+/* ANIMAZIONE */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import
+        "base",
+        "syntax-highlighting",
+        "materialize",
+        "custom"
+;

@@ -1,0 +1,732 @@
+
+
+
+#comitato {
+  display: flex;
+  flex-direction: column;   /* Cambiato per allineare le card in verticale */
+  align-items: center;      /* Centra le card orizzontalmente */
+  gap: 20px;                /* Aggiungi spazio tra le card */
+  padding: 20px 0;
+}
+
+/* Titolo per Documenti Comitato Locale */
+/* Titolo della sezione */
+.section-title {
+  text-align: center;  /* Centra il titolo */
+  font-size: 24px;     /* Dimensione del font */
+  font-weight: bold;   /* Grassetto */
+  margin-bottom: 30px; /* Spazio sotto il titolo */
+  color: #333;         /* Colore del testo */
+}
+
+/* Contenitore dei documenti */
+.document-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;  /* Maggiore spazio tra i riquadri */
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+/* Riquadro per ciascun documento */
+.document-item {
+  display: flex;
+  justify-content: space-between;  /* Spazio tra i due elementi */
+  align-items: center;
+  width: 90%;                      /* Maggiore larghezza orizzontale */
+  max-width: 1200px;               /* Limita la larghezza massima */
+  padding: 20px;                   /* Più padding per migliorare l'aspetto */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+/* Parte sinistra del riquadro (testo) */
+.document-left p {
+  color: #333;
+  flex: 1;
+  padding-left: 20px;
+  font-size: 18px;                 /* Dimensione del font del testo */
+  margin-right: 40px;              
+  text-align: center;
+}
+
+/* Parte destra del riquadro (bottoni) */
+.document-right {
+  flex: 0;                         /* Rende la parte destra un blocco più compatto */
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;                       /* Spazio tra i bottoni */
+  padding-right: 20px;
+}
+
+/* Bottone per il download */
+.btn-download {
+  background-color: #2a7ae2;
+  color: white;
+  padding: 12px 25px;              /* Maggiore padding per i bottoni */
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-download:hover {
+  background-color: #1c5db0;
+}
+
+/* Bottone per il link al Drive */
+.btn-drive {
+  background-color: #4CAF50;  /* Verde per distinguere dal download */
+  color: white;
+  padding: 12px 25px;              /* Maggiore padding per i bottoni */
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-drive:hover {
+  background-color: #45a049;
+}
+
+
+.member-cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  /* oppure space-between / space-around */
+  gap: 20px;
+  max-width: 640px; /* 2 card da 300px + gap */
+  margin: 0 auto;
+}
+
+
+.member-card {
+  display: flex;
+  flex-direction: row;
+  flex: 0 1 calc(50% - 20px); /* due colonne con gap */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 160px;
+  max-width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(42, 122, 226, 0.3); /* Glow blu */
+  border-color: #2a7ae2;
+}
+
+@media (max-width: 768px) {
+  .member-card {
+    flex: 0 1 100%;
+  }
+}
+
+
+.member-img {
+  flex: 1;
+  max-width: 100px;
+}
+
+.member-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.member-info {
+  flex: 2;
+  padding: 15px;
+  max-width: 200px;
+}
+
+.member-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  display: inline-block;
+}
+
+.member-info .role {
+  font-style: italic;
+  color: #777;
+}
+
+/* ------------------------------------------------------------------*/
+
+/* Wrapper dell'accordion, con layout a griglia */
+.accordion-wrapper {
+  margin-top: 40px;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* 4 per riga */
+  gap: 20px;
+}
+
+.section-subtitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Singola card */
+.accordion-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Header come bottone */
+.accordion-header {
+  background-color: #2a7ae2;
+  color: white;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s;
+  border-radius: 12px 12px 0 0;
+}
+
+.accordion-header:hover {
+  background-color: #0059b3;
+}
+
+/* Corpo nascosto di default */
+.accordion-body {
+  display: none;
+  padding: 18px 20px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
+  border-top: 1px solid #ddd;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Animazione */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*-------------------------------------------------------------------*/
+
+
+
+/*
+.circle-wrapper {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin: 50px auto ;
+}
+*/
+
+/*
+.circle-center {
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  width: 10px;
+  height: auto;
+  z-index: 2;
+  display: block;
+}
+
+.logo-aisf {
+  width: 100px;     
+  height: auto;
+  display: block;
+}
+
+.circle-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.circle-item {
+  position: absolute;
+  width: 100px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.circle-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #2a7ae2;
+}
+
+.circle-item .name {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.circle-item .role {
+  font-size: 12px;
+  color: #777;
+}
+*/
+/* 1-Luchino
+   2-Enzuccio
+   3-Sara
+   4-Cante
+   5-Gianfranco
+   6-Giorgio
+   7-Helian
+   8-Fabio */
+
+/* Posizioni in cerchio */
+/*
+.circle-item:nth-child(7) { top: 50%; left: 100%; }
+.circle-item:nth-child(5) { top: 80%; left: 80%; }
+.circle-item:nth-child(6) { top: 100%; left: 50%; }
+.circle-item:nth-child(4) { top: 80%; left: 20%; }
+.circle-item:nth-child(8) { top: 50%; left: 0%; }
+.circle-item:nth-child(3) { top: 20%; left: 20%; }
+.circle-item:nth-child(1) { top: 0%;  left: 50%; }
+.circle-item:nth-child(2) { top: 20%; left: 80%; }
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* Sezione Eventi Locali */
+#eventi {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.sub-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2a7ae2;
+  margin-bottom: 30px;
+}
+
+.no-events {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+  margin: 40px auto;
+  padding: 20px;
+}
+.no-events strong {
+  color: #2a7ae2;
+}
+
+/* Contenitore per gli eventi */
+.event-container {
+  margin-top: 50px;
+}
+
+/* Lista degli eventi */
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.event-section {
+  margin-bottom: 50px;
+}
+
+/* Card di ogni evento */
+.event-card {
+  width: 280px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.event-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.event-info {
+  margin-top: 15px;
+}
+
+.event-card h4 {
+  font-size: 18px;
+  color: #333;
+}
+
+.event-description {
+  /*font size: 14px; 
+  color: #555;*/
+  margin-top: 10px;
+}
+
+.toggle-button {
+  background-color: #0d47a1; /* Cambialo con il colore del tuo tema */
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.toggle-button::after {
+  content: "▼"; /* Freccetta verso il basso inizialmente */
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.toggle-button.open::after {
+  content: "▲"; /* Freccetta verso l'alto quando è aperto */
+  transform: rotate(180deg);
+}
+
+
+.description-content {
+  
+  display: none;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f5f5f5;
+  border-left: 3px solid #0d47a1; 
+  border-radius: 4px;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  max-height: 0;
+  
+}
+
+/* Quando la descrizione è visibile */
+.description-content.open {
+  display: block;
+  max-height: 1000px; /* Imposta un limite massimo per l’altezza */
+  transition: max-height 0.5s ease-in-out;
+}
+
+.event-date {
+  font-size: 14px;
+  color: #888;
+  margin-top: 10px;
+}
+
+/* Bottone per iscrizione */
+.btn-register {
+  display: inline-block;
+  background-color: #2a7ae2;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-register:hover {
+  background-color: #1c5db0;
+}
+
+/* Classi per differenziare eventi futuri e passati */
+.future {
+  border-left: 5px solid #2a7ae2;
+}
+
+.past {
+  border-left: 5px solid #888;
+  background-color: #f9f9f9;
+}
+ 
+.event-section {
+  margin-bottom: 50px;
+}  
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.lightbox-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 45px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------------------------------------------------------*/
+
+#convenzioni {
+  display: flex;
+  flex-wrap: wrap;   /* Cambiato per allineare le card in verticale */
+  gap: 20px;                /* Aggiungi spazio tra le card */
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 20px 0;
+}
+
+/* Titolo */
+.section-title h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #000;
+  margin-top: 50px; /* Distanza dal top */
+}
+
+.intro-text {
+  font-weight: normal;        /* Niente grassetto */
+  font-size: 14px;            /* Più piccolo */
+  color: #555;                /* Colore neutro */
+  text-align: center;
+  margin: 10px auto 20px auto; /* Distanza minore dal titolo e dalle card */
+  max-width: 700px;
+  line-height: 1.4;
+}
+
+
+.conv-card {
+  display: flex;
+  flex-direction: row;
+  width: 45%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;      /* Distanza tra le card */
+  height: 160px;
+  transition: all 0.3s ease-in-out;
+}
+
+.conv-card:hover {
+  border: 3px solid #2a7ae2;
+  box-shadow: 0 8px 12px rgba(42, 122, 226, 0.3); /* ombra più intensa */
+  transform: translateY(-5px); /* effetto sollevamento */
+}
+
+.conv-img {
+  flex: 1;
+  max-width: 100px;
+}
+
+.conv-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.conv-info {
+  flex: 2;
+  padding: 15px;
+}
+
+.conv-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.conv-info .role {
+  font-style: italic;
+  color: #777;
+}
+
+/* Media Query per dispositivi più piccoli */
+@media (max-width: 768px) {
+  .conv-card {
+    width: 100%; /* Su schermi più piccoli, le card prenderanno tutta la larghezza */
+  }
+}
+
+
+
+/* Sezione per la proposta di convenzione */
+
+.conv-proposal {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.conv-proposal h3 {
+  font-size: 22px;
+  color: #2a7ae2;
+  margin-bottom: 10px;
+}
+
+.conv-proposal p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.conv-proposal form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.conv-proposal input,
+.conv-proposal textarea {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.conv-proposal button {
+  background-color: #2a7ae2;
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.conv-proposal button:hover {
+  background-color: #1a5dc0;
+}

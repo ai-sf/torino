@@ -1,0 +1,71 @@
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+
+layout: default
+---
+<!-- Immagine orizzontale banner -->
+<div class="home-banner animated-banner">
+  <img src="{{ site.baseurl }}/img/CISF24.jpg" alt="Banner AISF Torino">
+</div>
+
+
+
+<!-- Sezione Logo e Descrizione -->
+<section id="home">
+  <div class="container">
+    <!-- Logo AISF Torino -->
+    <div class="logo animated-item">
+      <img src="{{ site.baseurl }}/{{ site.data.home.logo }}" alt="AISF Torino Logo">
+    </div>
+
+    <!-- Descrizione del Comitato -->
+    <div class="description animated-item">
+      <p>{{ site.data.home.description }}</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<div class="video-section">
+  <div class="particles left">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="video-wrapper">
+    <video src="{{ site.baseurl }}/img/CISF24.mp4" controls playsinline muted loop></video>
+  </div>
+
+  <div class="particles right">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+</div>
+
+<div class="post-it-wrapper">
+  <div class="post-it post-it-left animated-slide slide-left">
+    <span class="tape tape-left"></span>
+    <p>
+      Da eventi scientifici a workshop, passando per conferenze e incontri con speaker internazionali, AISF Torino è sempre in prima linea. Organizziamo attività stimolanti, dove imparare, crescere e fare networking con esperti/e e colleghi/e di tutta Italia.
+    </p>
+  </div>
+  <div class="post-it post-it-right animated-slide slide-right">
+    <span class="tape tape-right"></span>
+    <p>
+      Collaboriamo con università, centri di ricerca e altre associazioni di settore per offrirti opportunità uniche. Vieni a scoprire un mondo di conoscenze, idee e progetti che ti aiuteranno a costruire un futuro brillante nel mondo della fisica.
+    </p>
+  </div>
+</div>
+
+
+
+
+
+
+
+<script src="{{ site.baseurl }}/animation.js"></script>
+<script src="{{ site.baseurl }}/slideInPostits.js"></script>

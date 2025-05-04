@@ -1,0 +1,13 @@
+
+- text: "AISF"
+  url: https://www.ai-sf.it
+- icon: "share"
+  url: "https://www.google.com"
+- text: "Chi siamo"
+  url: "/comitato/"
+- text: "Eventi Locali"
+  url: "/eventi/"
+- text: "Convenzioni"
+  url: "/convenzioni/"
+- text: "Iscriviti"
+  url: "https://ai-sf.it/iscrizione/"  
