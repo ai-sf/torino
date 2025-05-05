@@ -1,3 +1,5 @@
+
+<!--
 <ul id="nav-mobile" class="sidenav">
     <li class="logo"><a id="mobile-logo-container" href="{{ site.url }}"><object id="front-page-logo" type="image/png" style="width:64px" data="{{ site.url }}/img/logo.png">Your browser does not support PNG</object></a></li>
     {% for item in include.nav %}
@@ -31,4 +33,54 @@
         </a></li>
         {% endif %}
     {% endfor %}
+</ul>
+-->
+
+<ul id="nav-mobile" class="sidenav">
+  <li class="logo">
+    <a id="mobile-logo-container" href="{{ site.url }}">
+      <object id="front-page-logo" type="image/png" style="width:64px" data="{{ site.url }}/img/logo.png">Your browser does not support PNG</object>
+    </a>
+  </li>
+
+  {% for item in include.nav %}
+    {% if item.subitems %}
+      <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">{{ item.text }}</a>
+            <div class="collapsible-body">
+              <ul>
+                {% for subitem in item.subitems %}
+                  <li>
+                    <a
+                      {% if subitem.url contains "http://" or subitem.url contains "https://" %}
+                        href="{{ subitem.url }}" target="_blank"
+                      {% else %}
+                        href="{{ site.url }}/{{ subitem.url }}"
+                      {% endif %}
+                    >
+                      {{ subitem.text }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+    {% else %}
+      <li>
+        <a
+          {% if item.url contains "http://" or item.url contains "https://" %}
+            href="{{ item.url }}" target="_blank"
+          {% else %}
+            href="{{ site.url }}/{{ item.url }}"
+          {% endif %}
+        >
+          {{ item.text }}
+        </a>
+      </li>
+    {% endif %}
+  {% endfor %}
 </ul>
