@@ -1,8 +1,7 @@
 # Site settings
 title: "Titolo sito"
 description: "Descrizione sito"
-url: "https://ai-sf.it"
-baseurl: "/torino"
+url: "ai-sf.it/torino"
 destination: ../site/
 locale: "it"
 
