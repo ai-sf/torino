@@ -1,3 +1,5 @@
+
+<!--
 <ul class="right hide-on-med-and-down">
    {% for item in include.nav %}
      {% assign itemurl = item.url | remove: '/' %}
@@ -14,6 +16,38 @@
      {% endif %}
    {% endfor %}
  </ul>
- 
+-->
+
+<ul class="right hide-on-med-and-down">
+  {% for item in include.nav %}
+    {% assign itemurl = item.url | remove: '/' %}
+    {% if item.subitems %}
+      <li>
+        {% if item.url contains 'http' %}
+          <a class="dropdown-button" href="{{ item.url }}" data-target="dropdown-{{ item.slug }}">
+            {{ item.text }}<i class="material-icons right">arrow_drop_down</i>
+          </a>
+        {% else %}
+          <a class="dropdown-button" href="{{ site.url }}/{{ item.url }}" data-target="dropdown-{{ item.slug }}">
+            {{ item.text }}<i class="material-icons right">arrow_drop_down</i>
+          </a>
+        {% endif %}
+      </li>
+    {% else %}
+      <li {% if itemurl == navurl %} class="active" {% endif %}>
+        {% if item.url contains 'http' %}
+          <a href="{{ item.url }}">
+            {{ item.text }}
+          </a>
+        {% else %}
+          <a href="{{ site.url }}/{{ item.url }}">
+            {{ item.text }}
+          </a>
+        {% endif %}
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
  
  
