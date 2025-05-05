@@ -1,6 +1,6 @@
 
 - text: "AISF"
-  url: "ai-sf.it/index.html"
+  url: "https://www.ai-sf.it/"
 - icon: "share"
   url: "https://www.google.com"
 - text: "Chi siamo"
@@ -10,4 +10,4 @@
 - text: "Convenzioni"
   url: "/convenzioni/"
 - text: "Iscriviti"
-  url: "ai-sf.it/iscrizione/"  
+  url: "https://www.ai-sf.it/iscrizione/"  
